@@ -2,7 +2,19 @@ package Model;
 
 public class Person {
 
-    public Person(int cafedraId, String name, String surname, String fatherName, boolean isATeacher, int course, int group) {
+    /**
+     *
+     * @param id
+     * @param cafedraId
+     * @param name
+     * @param surname
+     * @param fatherName
+     * @param isATeacher
+     * @param course
+     * @param group
+     */
+    public Person(int id, int cafedraId, String name, String surname, String fatherName, int isATeacher, int course, int group) {
+        this.id = id;
         this.cafedraId = cafedraId;
         this.name = name;
         this.surname = surname;
@@ -12,11 +24,12 @@ public class Person {
         this.group = group;
     }
 
+    private int id;
     private int cafedraId;
     private String name;
     private String surname;
     private String fatherName;
-    private boolean isATeacher;
+    private int isATeacher;
     private int course;
     private int group;
 
@@ -52,11 +65,11 @@ public class Person {
         this.fatherName = fatherName;
     }
 
-    public boolean isATeacher() {
+    public int isATeacher() {
         return isATeacher;
     }
 
-    public void setATeacher(boolean ATeacher) {
+    public void setATeacher(int ATeacher) {
         isATeacher = ATeacher;
     }
 

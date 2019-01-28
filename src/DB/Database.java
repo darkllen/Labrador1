@@ -2,6 +2,7 @@ package DB;
 
 import Model.Cafedra;
 import Model.Faculty;
+import Model.Person;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -54,8 +55,6 @@ public class Database {
         return arrayList;
     }
 
-    
-
     public void insertNewCafedra(int idFaculty, String cafedraName){
         String query =  "INSERT INTO `Cafedra` (`id_faculty`, `name`) VALUES (\""+idFaculty+"\",\""+cafedraName+"\")";
         try {
@@ -63,6 +62,21 @@ public class Database {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public ArrayList<Cafedra> getCafedras(){
+        ArrayList<Cafedra> arrayList = new ArrayList();
+        String query = "Select * from `Cafedra`";
+        try {
+            ResultSet rs = statement.executeQuery(query);
+            while (rs.next()){
+                Cafedra cafedra = new Cafedra(rs.getInt("id"),rs.getString("name"),rs.getInt("id_faculty"));
+                arrayList.add(cafedra);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return arrayList;
     }
 
     //TODO add possibility to add teacher without course and group
@@ -73,6 +87,21 @@ public class Database {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+        }
+    public ArrayList<Person> getPeople(){
+        ArrayList<Person> people = new ArrayList();
+        String query = "Select * from `Person`";
+        try {
+            ResultSet rs = statement.executeQuery(query);
+            while (rs.next()){
+                Person person = new Person(rs.getInt("id"),rs.getInt("cafedra_"),rs.getString("name"),rs.getString("surname"),rs.getString("father_name"),rs.getInt("student_teacher"),rs.getInt("course"),rs.getInt("s_group"));
+                people.add(person);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return people;
     }
 
 }
