@@ -8,6 +8,6 @@ public class Main {
         Database database = new Database(connect.connectToDB());
         System.out.println("s");
         System.out.println(database.getFaculties().get(0).getName());
-}
+    }
 
 }
