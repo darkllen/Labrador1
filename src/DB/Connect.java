@@ -12,6 +12,11 @@ public class Connect {
     private static final String password = "0987654321";
     public Connection connection;
 
+
+    /**
+     * Open connection for DB
+     * @return
+     */
     public Statement connectToDB() {
         try {
             DriverManager.registerDriver(new com.mysql.jdbc.Driver ());
