@@ -122,7 +122,7 @@ public class CafedraTable {
                 int i = table.getSelectedRow();
                 if(i>=0){
                     cafedraTable.setVisible(false);
-                    PeopleTable.create(WIDTH,HEIGHT,database.getCafedrasByFacultyId(fId).get(i).getId(),i,fId,number);
+                    PeopleTable.create(WIDTH,HEIGHT,database.getCafedrasByFacultyId(fId).get(i).getId(),i,fId,number,null);
                     }
                 else
                     System.out.println("Open_People Error");

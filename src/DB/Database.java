@@ -245,7 +245,7 @@ public class Database {
      * @param group
      */
     public void updatePersonById(int id,int idCafedra, String name, String surname, String father_name, int studentTeacher, int course, int group){
-String query = "UPDATE `People` SET `id_cafedra` = '"+idCafedra+"', `name` = '"+name+"', `surname` = '"+surname+"', `father_name` = '"+father_name+"', `student_teacher` = '"+studentTeacher+"', `course` = '"+course+"', `father_name` = '"+group+"' WHERE `People`.`id` = "+id;
+        String query = "UPDATE People SET id_cafedra = '"+idCafedra+"', name = '"+name+"', surname = '"+surname+"', father_name = '"+father_name+"', student_teacher = '"+studentTeacher+"', course = '"+course+"', s_group = '"+group+"' WHERE People.id = "+id;
         try {
             statement.executeUpdate(query);
         } catch (SQLException e) {

@@ -18,13 +18,13 @@ public class PeopleTable {
 
     int cId;
 
-    public static void create(int WIDTH,int HEIGHT,int cId,int number,int fId,int fNumber){
+    public static void create(int WIDTH,int HEIGHT,int cId,int number,int fId,int fNumber,ArrayList<Person>myArray){
 
         PeopleTable d = new PeopleTable();
-        d.createPeopleTable(WIDTH,HEIGHT,cId,number,fId,fNumber);
+        d.createPeopleTable(WIDTH,HEIGHT,cId,number,fId,fNumber,myArray);
     }
 
-    private void createPeopleTable(int WIDTH, int HEIGHT,int cId,int number,int fId,int fNumber) {
+    private void createPeopleTable(int WIDTH, int HEIGHT,int cId,int number,int fId,int fNumber,ArrayList<Person>myArray) {
         this.cId=cId;
 
         Connect connect= new Connect();
@@ -49,6 +49,8 @@ public class PeopleTable {
         final boolean[] delButtonPressed = {false};
 
         ArrayList<Person> array;
+        if(myArray!=null)array=myArray;
+        else
        if(cId==-1)
            array=database.getPeople();
        else array=database.getPeopleByCafedraId(cId);

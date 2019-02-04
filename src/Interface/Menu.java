@@ -49,13 +49,16 @@ public class Menu extends JFrame{
 
                System.out.println("pressed People");
                menu.setVisible(false);
-               PeopleTable.create(WIDTH,HEIGHT,-1,-1,-1,-1);
+               PeopleTable.create(WIDTH,HEIGHT,-1,-1,-1,-1,null);
            }
        });
 
        searchButton.addActionListener(new ActionListener(){
            public void actionPerformed(ActionEvent e){
+
                System.out.println("pressed Search");
+               menu.setVisible(false);
+               Search.create(WIDTH,HEIGHT);
            }
        });
 

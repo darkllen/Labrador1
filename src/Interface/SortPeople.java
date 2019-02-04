@@ -34,7 +34,7 @@ public class SortPeople {
             public void actionPerformed(ActionEvent e) {
                 frame.setVisible(false);
 
-                PeopleTable.create(WIDTH,HEIGHT,-1,-1,-1,-1);
+                PeopleTable.create(WIDTH,HEIGHT,-1,-1,-1,-1,null);
 
             }
         });
