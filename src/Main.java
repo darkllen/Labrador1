@@ -10,6 +10,10 @@ public class Main {
         Database database = new Database(connect.connectToDB());
         System.out.println("s");
         System.out.println(database.getFaculties().get(0).getName());
+        //database.insertNewFaculty("test");
+       // database.updateFacultyById(database.getFaculties().get(0).getId(),"smth");
+        //int cId=database.getCafedras().get(0).getId();
+        //database.insertNewPerson(cId,"Q","W","e",3,4,1);
 
     }
 

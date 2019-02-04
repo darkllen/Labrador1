@@ -14,7 +14,7 @@ public class Table {
 
 
 
-    public static void tableParameters(int WIDTH,JTable table, Vector<String> columns, DefaultTableModel model, ArrayList<Faculty> array) {
+    public static void tableParameters(int WIDTH,JTable table, Object[] columns, DefaultTableModel model) {
 
         model.setColumnIdentifiers(columns);
         table.setModel(model);
@@ -24,9 +24,7 @@ public class Table {
         table.setSelectionForeground(Color.red);
         table.setSelectionBackground(Color.yellow);
         table.setRowHeight(100);
-//        for(int i=0;i<columns.size();i++){
-//           TableColumn tableColumn= table.getColumnModel().getColumn(i);
-//        tableColumn.setPreferredWidth(100);
-//        }
+
+
     }
 }

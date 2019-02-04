@@ -46,7 +46,10 @@ public class Menu extends JFrame{
 
        peopleButton.addActionListener(new ActionListener(){
            public void actionPerformed(ActionEvent e){
+
                System.out.println("pressed People");
+               menu.setVisible(false);
+               PeopleTable.create(WIDTH,HEIGHT,-1,-1,-1,-1);
            }
        });
 

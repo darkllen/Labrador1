@@ -3,7 +3,6 @@ package Model;
 public class Person {
 
     /**
-     *
      * @param id
      * @param cafedraId
      * @param name
@@ -32,6 +31,8 @@ public class Person {
     private int isATeacher;
     private int course;
     private int group;
+
+    public int getId(){return id;}
 
     public int getCafedraId() {
         return cafedraId;

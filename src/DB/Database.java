@@ -28,6 +28,29 @@ public class Database {
             e.printStackTrace();
         }
     }
+    public void deleteFaculty(int id) throws SQLException {
+        String  query = "delete from `Faculty` where id="+id;
+        statement.execute(query);
+        ArrayList<Cafedra> cafedras = getCafedrasByFacultyId(id);
+        query = "delete from `Cafedra` where id_faculty="+id;
+        statement.execute(query);
+        for (int i=0;i<cafedras.size();i++){
+            query = "delete from `People` where id_cafedra="+cafedras.get(i).getFacultyId();
+            statement.execute(query);
+        }
+    }
+    public void deleteСafedra(int id) throws SQLException {
+        String  query = "delete from `Cafedra` where id="+id;
+        statement.execute(query);
+        query = "delete from `People` where id_cafedra="+id;
+        statement.execute(query);
+
+    }
+    public void deletePeople(int id) throws SQLException {
+        String  query = "delete from `People` where id="+id;
+        statement.execute(query);
+
+    }
 
     /**
      *
@@ -54,7 +77,7 @@ public class Database {
      * @param name
      */
     public void updateFacultyById(int id, String name){
-        String query = "UPDATE `Faculty` SET `name` = '"+name+"' WHERE `Faculty`.`id`"+id;
+        String query = "UPDATE `Faculty` SET `name` = '"+name+"' WHERE `Faculty`.`id`="+id;
         try {
             statement.executeUpdate(query);
         } catch (SQLException e) {
@@ -177,11 +200,11 @@ public class Database {
      */
     public ArrayList<Person> getPeople(){
         ArrayList<Person> people = new ArrayList();
-        String query = "Select * from `Person`";
+        String query = "Select * from `People`";
         try {
             ResultSet rs = statement.executeQuery(query);
             while (rs.next()){
-                Person person = new Person(rs.getInt("id"),rs.getInt("cafedra_"),rs.getString("name"),rs.getString("surname"),rs.getString("father_name"),rs.getInt("student_teacher"),rs.getInt("course"),rs.getInt("s_group"));
+                Person person = new Person(rs.getInt("id"),rs.getInt("id_cafedra"),rs.getString("name"),rs.getString("surname"),rs.getString("father_name"),rs.getInt("student_teacher"),rs.getInt("course"),rs.getInt("s_group"));
                 people.add(person);
             }
         } catch (SQLException e) {
@@ -197,11 +220,11 @@ public class Database {
      */
     public ArrayList<Person> getPeopleByCafedraId(int cafedraId){
         ArrayList<Person> people = new ArrayList();
-        String query = "Select * from `Person` where id_cafedra ="+cafedraId;
+        String query = "Select * from `People` where id_cafedra ="+cafedraId;
         try {
             ResultSet rs = statement.executeQuery(query);
             while (rs.next()){
-                Person person = new Person(rs.getInt("id"),rs.getInt("cafedra_"),rs.getString("name"),rs.getString("surname"),rs.getString("father_name"),rs.getInt("student_teacher"),rs.getInt("course"),rs.getInt("s_group"));
+                Person person = new Person(rs.getInt("id"),rs.getInt("id_cafedra"),rs.getString("name"),rs.getString("surname"),rs.getString("father_name"),rs.getInt("student_teacher"),rs.getInt("course"),rs.getInt("s_group"));
                 people.add(person);;
             }
         } catch (SQLException e) {
@@ -222,7 +245,7 @@ public class Database {
      * @param group
      */
     public void updatePersonById(int id,int idCafedra, String name, String surname, String father_name, int studentTeacher, int course, int group){
-String query = "UPDATE `People` SET `id_cafedra` = '"+idCafedra+"', `name` = '"+name+"', `surname` = '"+surname+"', `father_name` = '"+father_name+"', `studentTeacher` = '"+studentTeacher+"', `course` = '"+course+"', `father_name` = '"+group+"' WHERE `People`.`id` = "+id;
+String query = "UPDATE `People` SET `id_cafedra` = '"+idCafedra+"', `name` = '"+name+"', `surname` = '"+surname+"', `father_name` = '"+father_name+"', `student_teacher` = '"+studentTeacher+"', `course` = '"+course+"', `father_name` = '"+group+"' WHERE `People`.`id` = "+id;
         try {
             statement.executeUpdate(query);
         } catch (SQLException e) {
