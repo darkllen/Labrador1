@@ -552,7 +552,7 @@ public class Database {
                     case 0:
                         for (int i = people.size()-1;i>=1;i--){
                             for (int j=0;j<i;j++){
-                                if (Integer.valueOf(people.get(j).isATeacher()) < Integer.valueOf(people.get(i).isATeacher())){
+                                if (people.get(j).isATeacher().toLowerCase().compareTo(people.get(i).isATeacher().toLowerCase())<0){
                                     Person temp = people.get(i);
                                     people.set(i,people.get(j));
                                     people.set(j,temp);
@@ -563,7 +563,7 @@ public class Database {
                     case 1:
                         for (int i = people.size()-1;i>=1;i--){
                             for (int j=0;j<i;j++){
-                                if (Integer.valueOf(people.get(j).isATeacher()) > Integer.valueOf(people.get(i).isATeacher())){
+                                if (people.get(j).isATeacher().toLowerCase().compareTo(people.get(i).isATeacher().toLowerCase())>0){
                                     Person temp = people.get(i);
                                     people.set(i,people.get(j));
                                     people.set(j,temp);

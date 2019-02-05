@@ -89,10 +89,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/DB/Database.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
+            <state relative-caret-position="-4926">
               <caret line="33" column="65" selection-start-line="33" selection-start-column="65" selection-end-line="33" selection-end-column="65" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -150,7 +150,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Interface/Search.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1258">
@@ -261,7 +261,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549355154077" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549357153900" />
     <property name="last_opened_file_path" value="$USER_HOME$/Desktop/HW3" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -341,12 +341,12 @@
       <workItem from="1549273308100" duration="13077000" />
       <workItem from="1549298087067" duration="16476000" />
       <workItem from="1549343827964" duration="346000" />
-      <workItem from="1549348235553" duration="3916000" />
+      <workItem from="1549348235553" duration="4174000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="83452000" />
+    <option name="totallyTimeSpent" value="83710000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="0" width="974" height="1087" extended-state="0" />
@@ -561,39 +561,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/Person.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="37" selection-start-line="17" selection-start-column="25" selection-end-line="19" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/DB/Connect.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="16" column="29" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DB/Database.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="33" column="65" selection-start-line="33" selection-start-column="65" selection-end-line="33" selection-end-column="65" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#findPersonByIdCafedra#0;class#Database#0" />
-            <element signature="method#findPersonByName#0;class#Database#0" />
-            <element signature="method#findPersonBySurname#0;class#Database#0" />
-            <element signature="method#findPersonByFatherName#0;class#Database#0" />
-            <element signature="method#findPersonByStudentTeacher#0;class#Database#0" />
-            <element signature="method#findPersonByGroup#0;class#Database#0" />
-            <element signature="method#findPersonByCourse#0;class#Database#0" />
-            <element signature="method#sortCafedras#0;class#Database#0" />
-            <element signature="method#sortFaculty#0;class#Database#0" />
-            <element signature="method#sortPerson#0;class#Database#0" />
           </folding>
         </state>
       </provider>
@@ -635,6 +608,33 @@
           <caret line="74" column="65" lean-forward="true" selection-start-line="74" selection-start-column="65" selection-end-line="74" selection-end-column="65" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/Person.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="37" selection-start-line="17" selection-start-column="25" selection-end-line="19" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DB/Database.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4926">
+          <caret line="33" column="65" selection-start-line="33" selection-start-column="65" selection-end-line="33" selection-end-column="65" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#findPersonByIdCafedra#0;class#Database#0" />
+            <element signature="method#findPersonByName#0;class#Database#0" />
+            <element signature="method#findPersonBySurname#0;class#Database#0" />
+            <element signature="method#findPersonByFatherName#0;class#Database#0" />
+            <element signature="method#findPersonByStudentTeacher#0;class#Database#0" />
+            <element signature="method#findPersonByGroup#0;class#Database#0" />
+            <element signature="method#findPersonByCourse#0;class#Database#0" />
+            <element signature="method#sortCafedras#0;class#Database#0" />
+            <element signature="method#sortFaculty#0;class#Database#0" />
+            <element signature="method#sortPerson#0;class#Database#0" />
           </folding>
         </state>
       </provider>
