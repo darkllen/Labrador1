@@ -2,6 +2,7 @@ package Interface;
 
 import DB.Connect;
 import DB.Database;
+import Model.Cafedra;
 import Model.Person;
 
 import javax.swing.*;
@@ -34,10 +35,10 @@ public class Search {
 //            label1.setText("Print name:");
 //            label1.setLocation(WIDTH/2-70-label1.getWidth(),30);
 //            frame.add(label1);
-            JTextField[]text=new JTextField[6];
+            JTextField[]text=new JTextField[7];
 
-            JLabel s[] = new JLabel[6];
-            for(int i=0;i<6;i++){
+            JLabel s[] = new JLabel[7];
+            for(int i=0;i<7;i++){
                 s[i]=new JLabel();
             }
 
@@ -48,6 +49,7 @@ public class Search {
             s[3].setText("Student or Teacher");
             s[4].setText("Course");
             s[5].setText("Group");
+            s[6].setText("Cafedra");
 
 
 
@@ -72,15 +74,22 @@ public class Search {
             frame.add(StartButton.createHideButton());
 
             JButton searchButton = new JButton("Search");
-            searchButton.setBounds(WIDTH/2-WIDTH/10, HEIGHT-115, WIDTH / 5, 50);
+            searchButton.setBounds(3*WIDTH/4-WIDTH/10, HEIGHT-115, WIDTH / 5, 50);
             frame.add(searchButton);
 
             searchButton.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     frame.setVisible(false);
+                    ArrayList<Person> arrayP;
+                    ArrayList<Cafedra> arrayCaf;
+                    int cafId=0;
+                    arrayCaf = database.getCafedrasByName(text[6].getText());
+                    if (arrayCaf.size() != 0) {
+                        cafId=arrayCaf.get(0).getId();
+                    arrayP = database.findPerson(cafId, text[0].getText().toString(), text[1].getText().toString(), text[2].getText().toString(), text[3].getText(), text[4].getText(), text[5].getText(), sortColumn, sortAD);
 
-                    ArrayList<Person> array=database.findPerson(0,text[0].getText().toString(),text[1].getText().toString(),text[2].getText().toString(),text[3].getText(),text[4].getText(),text[5].getText(),sortColumn,sortAD);
-                    PeopleTable.create(WIDTH,HEIGHT,-1,-1,-1,-1,array,sortColumn,sortAD);
+                    PeopleTable.create(WIDTH,HEIGHT,-1,-1,-1,-1,arrayP,sortColumn,sortAD);}
+                    else Search.create(WIDTH,HEIGHT);
 
                 }
             });
