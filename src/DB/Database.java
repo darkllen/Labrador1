@@ -31,7 +31,7 @@ public class Database {
     public void deleteFaculty(int id) throws SQLException {
         String  query = "delete from `Faculty` where id="+id;
         statement.execute(query);
-        ArrayList<Cafedra> cafedras = getCafedrasByFacultyId(id);
+        ArrayList<Cafedra> cafedras = getCafedrasByFacultyId(id,0);
         query = "delete from `Cafedra` where id_faculty="+id;
         statement.execute(query);
         for (int i=0;i<cafedras.size();i++){
@@ -53,10 +53,10 @@ public class Database {
     }
 
     /**
-     *
+     * @param sortAD 1 for descending sort, 0 for ascending sort by name
      * @return arrayList of all faculties
      */
-    public ArrayList<Faculty> getFaculties(){
+    public ArrayList<Faculty> getFaculties(int sortAD){
         ArrayList<Faculty> arrayList = new ArrayList();
         String query = "Select * from `Faculty`";
         try {
@@ -67,6 +67,21 @@ public class Database {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+        sortFaculty(arrayList,sortAD);
+        return arrayList;
+    }
+    public ArrayList<Faculty> getFacultiesByName(String name){
+        ArrayList<Faculty> arrayList = new ArrayList();
+        String query = "Select * from `Faculty` where name="+name;
+        try {
+            ResultSet rs = statement.executeQuery(query);
+            while (rs.next()){
+                Faculty faculty = new Faculty(rs.getInt("id"),rs.getString("name"));
+                arrayList.add(faculty);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();;
         }
         return arrayList;
     }
@@ -88,9 +103,10 @@ public class Database {
     /**
      *
      * @param facultyId
+     * @param sortAD 1 for descending sort, 0 for ascending sort by name
      * @return all cafedras with this id
      */
-    public ArrayList<Cafedra> getCafedrasByFacultyId(int facultyId){
+    public ArrayList<Cafedra> getCafedrasByFacultyId(int facultyId, int sortAD){
         ArrayList<Cafedra> arrayList = new ArrayList();
         String query = "Select * from `Cafedra` where id_faculty =" +facultyId;
         try {
@@ -102,6 +118,7 @@ public class Database {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        sortCafedras(arrayList,sortAD);
         return arrayList;
     }
 
@@ -140,10 +157,10 @@ public class Database {
     }
 
     /**
-     *
+     * @param sortAD 1 for descending sort, 0 for ascending sort by name
      * @return all cafedras
      */
-    public ArrayList<Cafedra> getCafedras(){
+    public ArrayList<Cafedra> getCafedras(int sortAD){
         ArrayList<Cafedra> arrayList = new ArrayList();
         String query = "Select * from `Cafedra`";
         try {
@@ -155,6 +172,7 @@ public class Database {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        sortCafedras(arrayList,sortAD);
         return arrayList;
     }
 
@@ -195,10 +213,11 @@ public class Database {
         }
 
     /**
-     *
+     * @param sortColumn 0 for name, 1 for surname, 2 for father_name, 3 for studentTeacher, 4 for course, 5 for group
+     * @param sortAD 1 for descending sort, 0 for ascending sort
      * @return all people
      */
-    public ArrayList<Person> getPeople(){
+    public ArrayList<Person> getPeople(int sortColumn, int sortAD){
         ArrayList<Person> people = new ArrayList();
         String query = "Select * from `People`";
         try {
@@ -210,15 +229,18 @@ public class Database {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        sortPerson(people,sortColumn,sortAD);
         return people;
     }
 
     /**
      *
      * @param cafedraId
+     * @param sortColumn 0 for name, 1 for surname, 2 for father_name, 3 for studentTeacher, 4 for course, 5 for group
+     * @param sortAD 1 for descending sort, 0 for ascending sort
      * @return all people with this cafedraId
      */
-    public ArrayList<Person> getPeopleByCafedraId(int cafedraId){
+    public ArrayList<Person> getPeopleByCafedraId(int cafedraId, int sortColumn, int sortAD){
         ArrayList<Person> people = new ArrayList();
         String query = "Select * from `People` where id_cafedra ="+cafedraId;
         try {
@@ -230,6 +252,7 @@ public class Database {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        sortPerson(people,sortColumn,sortAD);
         return people;
     }
 
@@ -254,6 +277,7 @@ public class Database {
     }
 
     /**
+     *
      * find person by any of these params.
      * Params that will not be used should be 0 for int and "" for String
      * @param idCafedra
@@ -263,10 +287,12 @@ public class Database {
      * @param studentTeacher
      * @param course
      * @param group
+     * @param sortColumn 0 for name, 1 for surname, 2 for father_name, 3 for studentTeacher, 4 for course, 5 for group
+     * @param sortAD 1 for descending sort, 0 for ascending sort
      * @return
      */
-    public ArrayList<Person> findPerson(int idCafedra, String name, String surname, String father_name, String studentTeacher, String course, String group){
-        ArrayList<Person> people= getPeople();
+    public ArrayList<Person> findPerson(int idCafedra, String name, String surname, String father_name, String studentTeacher, String course, String group, int sortColumn, int sortAD){
+        ArrayList<Person> people= getPeople(0,0);
         if (idCafedra!=0) people=findPersonByIdCafedra(people, idCafedra);
         if (!name.equals("")) people=findPersonByName(people, name);
         if (!surname.equals("")) people=findPersonBySurname(people, surname);
@@ -274,6 +300,7 @@ public class Database {
         if (!studentTeacher.equals("")) people=findPersonByStudentTeacher(people, studentTeacher);
         if (!course.equals("")) people=findPersonByCourse(people, course);
         if (!group.equals("")) people=findPersonByGroup(people, group);
+        sortPerson(people,sortColumn, sortAD);
         return people;
     }
 
@@ -377,6 +404,7 @@ public class Database {
 
     /**
      *
+     *
      * @param people
      * @param course
      * @return
@@ -392,14 +420,208 @@ public class Database {
     }
 
 
-    private void sortPerson(ArrayList<Person> people){
-
-        ArrayList<String> stringArrayList= new ArrayList<String>();
-        for (int i = 0;i<people.size();i++){
-            stringArrayList.add(people.get(i).getName());
+    private void sortCafedras(ArrayList<Cafedra> cafedras, int sortAD){
+        switch (sortAD){
+            case 0:
+                for (int i = cafedras.size()-1;i>=1;i--){
+                    for (int j=0;j<i;j++){
+                        if (cafedras.get(j).getName().toLowerCase().compareTo(cafedras.get(i).getName().toLowerCase())<0){
+                            Cafedra temp = cafedras.get(i);
+                            cafedras.set(i,cafedras.get(j));
+                            cafedras.set(j,temp);
+                        }
+                    }
+                }
+                break;
+            case 1:
+                for (int i = cafedras.size()-1;i>=1;i--){
+                    for (int j=0;j<i;j++){
+                        if (cafedras.get(j).getName().toLowerCase().compareTo(cafedras.get(i).getName().toLowerCase())>0){
+                            Cafedra temp = cafedras.get(i);
+                            cafedras.set(i,cafedras.get(j));
+                            cafedras.set(j,temp);
+                        }
+                    }
+                }
         }
-
     }
+    private void sortFaculty(ArrayList<Faculty> faculties, int sortAD){
+        switch (sortAD){
+            case 0:
+                for (int i = faculties.size()-1;i>=1;i--){
+                    for (int j=0;j<i;j++){
+                        if (faculties.get(j).getName().toLowerCase().compareTo(faculties.get(i).getName().toLowerCase())<0){
+                            Faculty temp = faculties.get(i);
+                            faculties.set(i,faculties.get(j));
+                            faculties.set(j,temp);
+                        }
+                    }
+                }
+                break;
+            case 1:
+                for (int i = faculties.size()-1;i>=1;i--){
+                    for (int j=0;j<i;j++){
+                        if (faculties.get(j).getName().toLowerCase().compareTo(faculties.get(i).getName().toLowerCase())>0){
+                            Faculty temp = faculties.get(i);
+                            faculties.set(i,faculties.get(j));
+                            faculties.set(j,temp);
+                        }
+                    }
+                }
+        }
+    }
+    private void sortPerson(ArrayList<Person> people, int sotrColumn, int sortAD){
+        switch (sotrColumn){
+            case 0:
+                switch (sortAD){
+                    case 0:
+                        for (int i = people.size()-1;i>=1;i--){
+                            for (int j=0;j<i;j++){
+                                if (people.get(j).getName().toLowerCase().compareTo(people.get(i).getName().toLowerCase())<0){
+                                    Person temp = people.get(i);
+                                    people.set(i,people.get(j));
+                                    people.set(j,temp);
+                                }
+                            }
+                        }
+                        break;
+                    case 1:
+                        for (int i = people.size()-1;i>=1;i--){
+                            for (int j=0;j<i;j++){
+                                if (people.get(j).getName().toLowerCase().compareTo(people.get(i).getName().toLowerCase())>0){
+                                    Person temp = people.get(i);
+                                    people.set(i,people.get(j));
+                                    people.set(j,temp);
+                                }
+                            }
+                        }
+                }
+                break;
+            case 1:
+                switch (sortAD){
+                    case 0:
+                        for (int i = people.size()-1;i>=1;i--){
+                            for (int j=0;j<i;j++){
+                                if (people.get(j).getSurname().toLowerCase().compareTo(people.get(i).getSurname().toLowerCase())<0){
+                                    Person temp = people.get(i);
+                                    people.set(i,people.get(j));
+                                    people.set(j,temp);
+                                }
+                            }
+                        }
+                        break;
+                    case 1:
+                        for (int i = people.size()-1;i>=1;i--){
+                            for (int j=0;j<i;j++){
+                                if (people.get(j).getSurname().toLowerCase().compareTo(people.get(i).getSurname().toLowerCase())>0){
+                                    Person temp = people.get(i);
+                                    people.set(i,people.get(j));
+                                    people.set(j,temp);
+                                }
+                            }
+                        }
+                }
+                break;
+            case 2:
+                switch (sortAD){
+                    case 0:
+                        for (int i = people.size()-1;i>=1;i--){
+                            for (int j=0;j<i;j++){
+                                if (people.get(j).getFatherName().toLowerCase().compareTo(people.get(i).getFatherName().toLowerCase())<0){
+                                    Person temp = people.get(i);
+                                    people.set(i,people.get(j));
+                                    people.set(j,temp);
+                                }
+                            }
+                        }
+                        break;
+                    case 1:
+                        for (int i = people.size()-1;i>=1;i--){
+                            for (int j=0;j<i;j++){
+                                if (people.get(j).getFatherName().toLowerCase().compareTo(people.get(i).getFatherName().toLowerCase())>0){
+                                    Person temp = people.get(i);
+                                    people.set(i,people.get(j));
+                                    people.set(j,temp);
+                                }
+                            }
+                        }
+                }
+                break;
+            case 3:
+                switch (sortAD){
+                    case 0:
+                        for (int i = people.size()-1;i>=1;i--){
+                            for (int j=0;j<i;j++){
+                                if (Integer.valueOf(people.get(j).isATeacher()) < Integer.valueOf(people.get(i).isATeacher())){
+                                    Person temp = people.get(i);
+                                    people.set(i,people.get(j));
+                                    people.set(j,temp);
+                                }
+                            }
+                        }
+                        break;
+                    case 1:
+                        for (int i = people.size()-1;i>=1;i--){
+                            for (int j=0;j<i;j++){
+                                if (Integer.valueOf(people.get(j).isATeacher()) > Integer.valueOf(people.get(i).isATeacher())){
+                                    Person temp = people.get(i);
+                                    people.set(i,people.get(j));
+                                    people.set(j,temp);
+                                }
+                            }
+                        }
+                }
+                break;
+            case 4:
+                switch (sortAD){
+                    case 0:
+                        for (int i = people.size()-1;i>=1;i--){
+                            for (int j=0;j<i;j++){
+                                if (Integer.valueOf(people.get(j).getCourse()) < Integer.valueOf(people.get(i).getCourse())){
+                                    Person temp = people.get(i);
+                                    people.set(i,people.get(j));
+                                    people.set(j,temp);
+                                }
+                            }
+                        }
+                        break;
+                    case 1:
+                        for (int i = people.size()-1;i>=1;i--){
+                            for (int j=0;j<i;j++){
+                                if (Integer.valueOf(people.get(j).getCourse()) > Integer.valueOf(people.get(i).getCourse())){
+                                    Person temp = people.get(i);
+                                    people.set(i,people.get(j));
+                                    people.set(j,temp);
+                                }
+                            }
+                        }
+                }
+                break;
+            case 5:
+                switch (sortAD){
+                    case 0:
+                        for (int i = people.size()-1;i>=1;i--){
+                            for (int j=0;j<i;j++){
+                                if (Integer.valueOf(people.get(j).getGroup()) < Integer.valueOf(people.get(i).getGroup())){
+                                    Person temp = people.get(i);
+                                    people.set(i,people.get(j));
+                                    people.set(j,temp);
+                                }
+                            }
+                        }
+                        break;
+                    case 1:
+                        for (int i = people.size()-1;i>=1;i--){
+                            for (int j=0;j<i;j++){
+                                if (Integer.valueOf(people.get(j).getGroup()) > Integer.valueOf(people.get(i).getGroup())){
+                                    Person temp = people.get(i);
+                                    people.set(i,people.get(j));
+                                    people.set(j,temp);
+                                }
+                            }
+                        }
+                }
 
-
+        }
+    }
 }

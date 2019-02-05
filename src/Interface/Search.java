@@ -80,7 +80,7 @@ public class Search {
                     if(text[i].getText().equals("")) text1[i]="0";
                     else text1[i]=text[i].getText();
                     }
-                    ArrayList<Person> array=database.findPerson(0,text[0].getText().toString(),text[1].getText().toString(),text[2].getText().toString(),Integer.valueOf(text1[3]),Integer.valueOf(text1[4]),Integer.valueOf(text1[5]));
+                    ArrayList<Person> array=database.findPerson(0,text[0].getText().toString(),text[1].getText().toString(),text[2].getText().toString(),Integer.valueOf(text1[3]),Integer.valueOf(text1[4]),Integer.valueOf(text1[5]),);
                     PeopleTable.create(WIDTH,HEIGHT,-1,-1,-1,-1,array);
 
                 }
