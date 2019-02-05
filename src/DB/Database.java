@@ -73,7 +73,7 @@ public class Database {
     }
     public ArrayList<Faculty> getFacultiesByName(String name){
         ArrayList<Faculty> arrayList = new ArrayList();
-        String query = "Select * from `Faculty` where name="+name;
+        String query = "Select * from `Faculty` where `name`='"+name+"'";
         try {
             ResultSet rs = statement.executeQuery(query);
             while (rs.next()){
@@ -129,7 +129,7 @@ public class Database {
      */
     public ArrayList<Cafedra> getCafedrasByName(String name){
         ArrayList<Cafedra> arrayList = new ArrayList();
-        String query = "Select * from `Cafedra` where name ="+name;
+        String query = "Select * from `Cafedra` where `name` ='"+name+"'";
         try {
             ResultSet rs = statement.executeQuery(query);
             while (rs.next()){
