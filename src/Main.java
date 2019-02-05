@@ -9,7 +9,7 @@ public class Main {
         System.out.println("s");
         Database database = new Database(connect.connectToDB());
         System.out.println("s");
-        System.out.println(database.getFaculties().get(0).getName());
+        System.out.println(database.getFaculties(0).get(0).getName());
         //database.insertNewFaculty("test");
        // database.updateFacultyById(database.getFaculties().get(0).getId(),"smth");
         //int cId=database.getCafedras().get(0).getId();

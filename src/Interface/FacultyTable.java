@@ -27,6 +27,8 @@ public void createFacultyTable(int WIDTH,int HEIGHT) {
     Connect connect= new Connect();
     Database database=new Database(connect.connectToDB());
 
+    int facultySort=0;
+
     JFrame facultyTable = new JFrame("Lab 1: FACULTY");
     facultyTable.setSize(WIDTH, HEIGHT);
     facultyTable.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -37,7 +39,7 @@ public void createFacultyTable(int WIDTH,int HEIGHT) {
     final boolean[] newButtonPressed = {false};
     final boolean[] delButtonPressed = {false};
 
-    ArrayList<Faculty> array=database.getFaculties();
+    ArrayList<Faculty> array=database.getFaculties(facultySort);
 
     Object[] columns = new Object[1];
     columns[0]="Name";
@@ -101,7 +103,7 @@ public void createFacultyTable(int WIDTH,int HEIGHT) {
                 model.removeRow(i);
 
                 try {
-                    database.deleteFaculty(database.getFaculties().get(i).getId());
+                    database.deleteFaculty(database.getFaculties(facultySort).get(i).getId());
                 } catch (SQLException e1) {
                     e1.printStackTrace();
                 }
@@ -122,7 +124,7 @@ public void createFacultyTable(int WIDTH,int HEIGHT) {
             int i = table.getSelectedRow();
             if(i>=0){
             facultyTable.setVisible(false);
-            CafedraTable.create(WIDTH,HEIGHT,database.getFaculties().get(i).getId(),i);}
+            CafedraTable.create(WIDTH,HEIGHT,database.getFaculties(facultySort).get(i).getId(),i);}
             else
                 System.out.println("Open_Cafedras Error");
 
@@ -150,7 +152,7 @@ public void createFacultyTable(int WIDTH,int HEIGHT) {
         else
             {
             data = model.getValueAt(row, column);
-            database.updateFacultyById(database.getFaculties().get(row).getId(), data.toString());
+            database.updateFacultyById(database.getFaculties(facultySort).get(row).getId(), data.toString());
         }
 
         }

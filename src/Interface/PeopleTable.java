@@ -18,17 +18,20 @@ public class PeopleTable {
 
     int cId;
 
-    public static void create(int WIDTH,int HEIGHT,int cId,int number,int fId,int fNumber,ArrayList<Person>myArray){
+    public static void create(int WIDTH,int HEIGHT,int cId,int number,int fId,int fNumber,ArrayList<Person>myArray,int sortColumn,int sortAD){
 
         PeopleTable d = new PeopleTable();
-        d.createPeopleTable(WIDTH,HEIGHT,cId,number,fId,fNumber,myArray);
+        d.createPeopleTable(WIDTH,HEIGHT,cId,number,fId,fNumber,myArray,sortColumn,sortAD);
     }
 
-    private void createPeopleTable(int WIDTH, int HEIGHT,int cId,int number,int fId,int fNumber,ArrayList<Person>myArray) {
+    private void createPeopleTable(int WIDTH, int HEIGHT,int cId,int number,int fId,int fNumber,ArrayList<Person>myArray,int sortColumn,int sortAD) {
         this.cId=cId;
 
         Connect connect= new Connect();
         Database database=new Database(connect.connectToDB());
+
+        int cafedraSort=0;
+        int facultySort=0;
 
         JFrame peopleTable = new JFrame("Lab 1: PEOPLE");
         peopleTable.setSize(WIDTH, HEIGHT);
@@ -49,11 +52,11 @@ public class PeopleTable {
         final boolean[] delButtonPressed = {false};
 
         ArrayList<Person> array;
-        if(myArray!=null)array=myArray;
+        if(myArray!=null){database.sortPerson(myArray,sortColumn,sortAD);array=myArray;}
         else
        if(cId==-1)
-           array=database.getPeople();
-       else array=database.getPeopleByCafedraId(cId);
+           array=database.getPeople(sortColumn,sortAD);
+       else array=database.getPeopleByCafedraId(cId,cafedraSort,sortAD);
 
         Object[] columns = new Object[6];
         columns[0]="Name";
@@ -84,8 +87,8 @@ public class PeopleTable {
         TableColumn professionColumn = table.getColumnModel().getColumn(3);
 
         JComboBox comboBox = new JComboBox();
-        comboBox.addItem("1");
-        comboBox.addItem("2");
+        comboBox.addItem("Student");
+        comboBox.addItem("Teacher");
         professionColumn.setCellEditor(new DefaultCellEditor(comboBox));
 
         if(cId!=-1) {
@@ -116,11 +119,11 @@ public class PeopleTable {
                     row[0] = textPerson;
                     row[1] = textPerson;
                     row[2] = textPerson;
-                    row[3] = 0;
+                    row[3] = "Student";
                     row[4] = 0;
                     row[5] = 0;
                     model.addRow(row);
-                    database.insertNewPerson(cId,textPerson,textPerson,textPerson,1,1,1);
+                    database.insertNewPerson(cId,textPerson,textPerson,textPerson,"Student","1","1");
                 }
             });
 
@@ -135,7 +138,7 @@ public class PeopleTable {
                     if (i >= 0) {
                         delButtonPressed[0] = true;
                         model.removeRow(i);
-                        int pId = database.getPeopleByCafedraId(cId).get(i).getId();
+                        int pId = database.getPeopleByCafedraId(cId,sortColumn,sortAD).get(i).getId();
                         try {
                             database.deletePeople(pId);
                         } catch (SQLException e1) {
@@ -176,7 +179,7 @@ public class PeopleTable {
                         data[3]=model.getValueAt(row,3);
                         data[4]=model.getValueAt(row,4);
                         data[5]=model.getValueAt(row,5);
-                        database.updatePersonById(database.getPeopleByCafedraId(cId).get(row).getId(),cId, data[0].toString(),data[1].toString(),data[2].toString(),Integer.valueOf(data[3].toString()),Integer.valueOf(data[4].toString()),Integer.valueOf(data[5].toString()));
+                        database.updatePersonById(database.getPeopleByCafedraId(cId,sortColumn,sortAD).get(row).getId(),cId, data[0].toString(),data[1].toString(),data[2].toString(),data[3].toString(),data[4].toString(),data[5].toString());
 
 
                     }
@@ -210,7 +213,7 @@ public class PeopleTable {
             sortButton.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     peopleTable.setVisible(false);
-                    SortPeople.create(WIDTH, HEIGHT);
+                    SortPeople.create(WIDTH, HEIGHT,myArray);
 
                 }
             });

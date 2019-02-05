@@ -49,7 +49,7 @@ public class Menu extends JFrame{
 
                System.out.println("pressed People");
                menu.setVisible(false);
-               PeopleTable.create(WIDTH,HEIGHT,-1,-1,-1,-1,null);
+               PeopleTable.create(WIDTH,HEIGHT,-1,-1,-1,-1,null,0,0);
            }
        });
 

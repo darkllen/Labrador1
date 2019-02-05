@@ -25,7 +25,12 @@ public class CafedraTable {
         Connect connect= new Connect();
         Database database=new Database(connect.connectToDB());
 
-        JFrame cafedraTable = new JFrame("Lab 1: CAFEDRAS OF \"" + database.getFaculties().get(number).getName()+"\"");
+        int facultySort=0;
+        int cafedraSort=0;
+        int sortColumn=0;
+        int sortAD=0;
+
+        JFrame cafedraTable = new JFrame("Lab 1: CAFEDRAS OF \"" + database.getFaculties(facultySort).get(number).getName()+"\"");
         cafedraTable.setSize(WIDTH, HEIGHT);
         cafedraTable.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         cafedraTable.setVisible(true);
@@ -36,7 +41,7 @@ public class CafedraTable {
         final boolean[] newButtonPressed = {false};
         final boolean[] delButtonPressed = {false};
 
-        ArrayList<Cafedra> array=database.getCafedrasByFacultyId(fId);
+        ArrayList<Cafedra> array=database.getCafedrasByFacultyId(fId,cafedraSort);
 
         Object[] columns = new Object[1];
         columns[0]="Name";
@@ -97,7 +102,7 @@ public class CafedraTable {
                 if(i >= 0){
                     delButtonPressed[0]=true;
                     model.removeRow(i);
-                    int cId=database.getCafedrasByFacultyId(fId).get(i).getFacultyId();
+                    int cId=database.getCafedrasByFacultyId(fId,cafedraSort).get(i).getFacultyId();
                     try {
                         database.deleteСafedra(cId);
                     } catch (SQLException e1) {
@@ -122,7 +127,7 @@ public class CafedraTable {
                 int i = table.getSelectedRow();
                 if(i>=0){
                     cafedraTable.setVisible(false);
-                    PeopleTable.create(WIDTH,HEIGHT,database.getCafedrasByFacultyId(fId).get(i).getId(),i,fId,number,null);
+                    PeopleTable.create(WIDTH,HEIGHT,database.getCafedrasByFacultyId(fId,cafedraSort).get(i).getId(),i,fId,number,null,sortColumn,sortAD);
                     }
                 else
                     System.out.println("Open_People Error");
@@ -150,7 +155,7 @@ public class CafedraTable {
                 else
                 {
                     data = model.getValueAt(row, column);
-                    database.updateCafedra(database.getCafedrasByFacultyId(fId).get(row).getId(),fId,data.toString());
+                    database.updateCafedra(database.getCafedrasByFacultyId(fId,cafedraSort).get(row).getId(),fId,data.toString());
                 }
 
             }

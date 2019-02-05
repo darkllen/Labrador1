@@ -470,7 +470,7 @@ public class Database {
                 }
         }
     }
-    private void sortPerson(ArrayList<Person> people, int sotrColumn, int sortAD){
+    public void sortPerson(ArrayList<Person> people, int sotrColumn, int sortAD){
         switch (sotrColumn){
             case 0:
                 switch (sortAD){

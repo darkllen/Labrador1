@@ -21,6 +21,9 @@ public class Search {
             Connect connect= new Connect();
             Database database=new Database(connect.connectToDB());
 
+            int sortColumn=0;
+            int sortAD=0;
+
             JFrame frame = new JFrame("LAB 1: SEARCH MENU");
             frame.setSize(WIDTH, HEIGHT);
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -75,13 +78,9 @@ public class Search {
             searchButton.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     frame.setVisible(false);
-                    String[]text1=new String[6];
-                    for(int i=3;i<6;i++){
-                    if(text[i].getText().equals("")) text1[i]="0";
-                    else text1[i]=text[i].getText();
-                    }
-                    ArrayList<Person> array=database.findPerson(0,text[0].getText().toString(),text[1].getText().toString(),text[2].getText().toString(),Integer.valueOf(text1[3]),Integer.valueOf(text1[4]),Integer.valueOf(text1[5]),);
-                    PeopleTable.create(WIDTH,HEIGHT,-1,-1,-1,-1,array);
+
+                    ArrayList<Person> array=database.findPerson(0,text[0].getText().toString(),text[1].getText().toString(),text[2].getText().toString(),text[3].getText(),text[4].getText(),text[5].getText(),sortColumn,sortAD);
+                    PeopleTable.create(WIDTH,HEIGHT,-1,-1,-1,-1,array,sortColumn,sortAD);
 
                 }
             });

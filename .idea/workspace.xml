@@ -9,79 +9,13 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FUSProjectUsageTrigger">
-    <session id="-1095051208">
-      <usages-collector id="statistics.file.extensions.edit">
-        <counts>
-          <entry key="java" value="995" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.edit">
-        <counts>
-          <entry key="JAVA" value="995" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.lifecycle.project">
-        <counts>
-          <entry key="project.closed" value="2" />
-          <entry key="project.open.time.1" value="2" />
-          <entry key="project.opened" value="2" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.open">
-        <counts>
-          <entry key="java" value="5" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.open">
-        <counts>
-          <entry key="JAVA" value="5" />
-        </counts>
-      </usages-collector>
-    </session>
-  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Model/Faculty.java">
+        <entry file="file://$PROJECT_DIR$/src/Interface/CafedraTable.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="41" selection-start-line="4" selection-start-column="41" selection-end-line="4" selection-end-column="41" />
-              <folding>
-                <element signature="e#264#265#0" expanded="true" />
-                <element signature="e#292#293#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Model/Cafedra.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="56" selection-start-line="4" selection-start-column="56" selection-end-line="4" selection-end-column="56" />
-              <folding>
-                <element signature="e#239#240#0" expanded="true" />
-                <element signature="e#271#272#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Model/Person.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="37" selection-start-line="17" selection-start-column="25" selection-end-line="19" selection-end-column="37" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/DB/Connect.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="29" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
+            <state relative-caret-position="274">
+              <caret line="129" column="151" selection-start-line="129" selection-start-column="151" selection-end-line="129" selection-end-column="151" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -89,11 +23,44 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="11" column="50" selection-start-line="11" selection-start-column="50" selection-end-line="11" selection-end-column="50" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Interface/Menu.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="331">
+              <caret line="57" lean-forward="true" selection-start-line="57" selection-end-line="57" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/DB/Connect.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="17" column="14" lean-forward="true" selection-start-line="17" selection-start-column="14" selection-end-line="17" selection-end-column="14" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/DB/Database.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-4926">
-              <caret line="33" column="65" selection-start-line="33" selection-start-column="65" selection-end-line="33" selection-end-column="65" />
+            <state relative-caret-position="152">
+              <caret line="471" column="5" lean-forward="true" selection-start-line="471" selection-start-column="5" selection-end-line="471" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#findPersonByIdCafedra#0;class#Database#0" />
@@ -103,9 +70,6 @@
                 <element signature="method#findPersonByStudentTeacher#0;class#Database#0" />
                 <element signature="method#findPersonByGroup#0;class#Database#0" />
                 <element signature="method#findPersonByCourse#0;class#Database#0" />
-                <element signature="method#sortCafedras#0;class#Database#0" />
-                <element signature="method#sortFaculty#0;class#Database#0" />
-                <element signature="method#sortPerson#0;class#Database#0" />
               </folding>
             </state>
           </provider>
@@ -130,19 +94,22 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Interface/StartButton.java">
+        <entry file="file://$PROJECT_DIR$/src/Interface/SortPeople.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="18" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
+            <state relative-caret-position="1768">
+              <caret line="152" column="65" selection-start-line="152" selection-start-column="65" selection-end-line="152" selection-end-column="65" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Interface/SortPeople.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Interface/PeopleTable.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="17" selection-start-line="20" selection-start-column="17" selection-end-line="20" selection-end-column="17" />
+            <state relative-caret-position="204">
+              <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -153,8 +120,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Interface/Search.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1258">
-              <caret line="74" column="65" lean-forward="true" selection-start-line="74" selection-start-column="65" selection-end-line="74" selection-end-column="65" />
+            <state relative-caret-position="323">
+              <caret line="82" column="68" selection-start-line="82" selection-start-column="68" selection-end-line="82" selection-end-column="68" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -181,28 +148,22 @@
         <option value="$PROJECT_DIR$/src/DB/Connect.java" />
         <option value="$PROJECT_DIR$/src/Interface/Window.java" />
         <option value="$PROJECT_DIR$/src/Interface/StartButton.java" />
-        <option value="$PROJECT_DIR$/src/Interface/FacultyTable.java" />
         <option value="$PROJECT_DIR$/src/Model/Cafedra.java" />
         <option value="$PROJECT_DIR$/src/Interface/Table.java" />
-        <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/Interface/Sort.java" />
-        <option value="$PROJECT_DIR$/src/Interface/PeopleTable.java" />
-        <option value="$PROJECT_DIR$/src/Interface/CafedraTable.java" />
-        <option value="$PROJECT_DIR$/src/Interface/SortPeople.java" />
-        <option value="$PROJECT_DIR$/src/Interface/Menu.java" />
         <option value="$PROJECT_DIR$/src/Model/Person.java" />
-        <option value="$PROJECT_DIR$/src/DB/Database.java" />
+        <option value="$PROJECT_DIR$/src/Interface/FacultyTable.java" />
+        <option value="$PROJECT_DIR$/src/Interface/CafedraTable.java" />
         <option value="$PROJECT_DIR$/src/Interface/Search.java" />
+        <option value="$PROJECT_DIR$/src/Main.java" />
+        <option value="$PROJECT_DIR$/src/Interface/Menu.java" />
+        <option value="$PROJECT_DIR$/src/Interface/SortPeople.java" />
+        <option value="$PROJECT_DIR$/src/DB/Database.java" />
+        <option value="$PROJECT_DIR$/src/Interface/PeopleTable.java" />
       </list>
     </option>
   </component>
-  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsGulpfileManager">
-    <detection-done>true</detection-done>
-    <sorting>DEFINITION_ORDER</sorting>
-  </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-7" />
     <option name="width" value="974" />
     <option name="height" value="1087" />
@@ -213,6 +174,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -254,7 +216,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -342,17 +303,18 @@
       <workItem from="1549298087067" duration="16476000" />
       <workItem from="1549343827964" duration="346000" />
       <workItem from="1549348235553" duration="4174000" />
+      <workItem from="1549373163839" duration="4572000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="83710000" />
+    <option name="totallyTimeSpent" value="88282000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="0" width="974" height="1087" extended-state="0" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.32822758" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2322239" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -362,7 +324,7 @@
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" weight="0.3289689" />
-      <window_info anchor="bottom" id="Run" order="3" weight="0.35135135" />
+      <window_info anchor="bottom" id="Run" order="3" weight="0.3502455" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
@@ -384,7 +346,7 @@
       <window_info anchor="right" id="Maven Projects" order="9" />
     </layout>
     <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.29954615" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2322239" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -394,7 +356,7 @@
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" weight="0.3289689" />
-      <window_info anchor="bottom" id="Run" order="3" weight="0.4844517" />
+      <window_info anchor="bottom" id="Run" order="3" weight="0.3502455" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
@@ -402,8 +364,8 @@
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="10" />
-      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" weight="0.32948583" />
-      <window_info anchor="bottom" id="Messages" order="12" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" weight="0.3289689" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.3289689" />
       <window_info anchor="right" id="Maven" order="0" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
@@ -419,15 +381,12 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
-  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/Interface/FacultyTable.java</url>
-          <line>138</line>
+          <line>140</line>
           <properties method="tableChanged">
             <option name="EMULATED" value="true" />
           </properties>
@@ -491,54 +450,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Interface/CafedraTable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2108">
-          <caret line="124" column="121" selection-start-line="124" selection-start-column="121" selection-end-line="124" selection-end-column="121" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Interface/PeopleTable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="1" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="20" />
-          <folding>
-            <element signature="e#1158#1364#0" expanded="true" />
-            <element signature="e#1363#1364#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Interface/Menu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="60" selection-start-line="60" selection-end-line="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Interface/FacultyTable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="69" column="7" lean-forward="true" selection-start-line="60" selection-start-column="4" selection-end-line="69" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="25" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Model/Faculty.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -561,27 +472,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DB/Connect.java">
+    <entry file="file://$PROJECT_DIR$/src/Model/Person.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="29" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
+        <state relative-caret-position="323">
+          <caret line="19" column="37" selection-start-line="17" selection-start-column="25" selection-end-line="19" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Interface/FacultyTable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="237">
+          <caret line="154" column="72" selection-start-line="154" selection-start-column="72" selection-end-line="154" selection-end-column="72" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Interface/Window.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Interface/Table.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="27" selection-start-line="27" selection-end-line="27" />
         </state>
       </provider>
     </entry>
@@ -592,10 +496,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Interface/SortPeople.java">
+    <entry file="file://$PROJECT_DIR$/src/Interface/Table.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="17" selection-start-line="20" selection-start-column="17" selection-end-line="20" selection-end-column="17" />
+        <state relative-caret-position="323">
+          <caret line="27" selection-start-line="27" selection-end-line="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Interface/Window.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Interface/CafedraTable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="274">
+          <caret line="129" column="151" selection-start-line="129" selection-start-column="151" selection-end-line="129" selection-end-column="151" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="50" selection-start-line="11" selection-start-column="50" selection-end-line="11" selection-end-column="50" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -604,25 +532,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Interface/Search.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1258">
-          <caret line="74" column="65" lean-forward="true" selection-start-line="74" selection-start-column="65" selection-end-line="74" selection-end-column="65" />
+        <state relative-caret-position="323">
+          <caret line="82" column="68" selection-start-line="82" selection-start-column="68" selection-end-line="82" selection-end-column="68" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/Person.java">
+    <entry file="file://$PROJECT_DIR$/src/Interface/Menu.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="37" selection-start-line="17" selection-start-column="25" selection-end-line="19" selection-end-column="37" />
+        <state relative-caret-position="331">
+          <caret line="57" lean-forward="true" selection-start-line="57" selection-end-line="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Interface/SortPeople.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1768">
+          <caret line="152" column="65" selection-start-line="152" selection-start-column="65" selection-end-line="152" selection-end-column="65" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/DB/Database.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4926">
-          <caret line="33" column="65" selection-start-line="33" selection-start-column="65" selection-end-line="33" selection-end-column="65" />
+        <state relative-caret-position="152">
+          <caret line="471" column="5" lean-forward="true" selection-start-line="471" selection-start-column="5" selection-end-line="471" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#findPersonByIdCafedra#0;class#Database#0" />
@@ -632,9 +570,26 @@
             <element signature="method#findPersonByStudentTeacher#0;class#Database#0" />
             <element signature="method#findPersonByGroup#0;class#Database#0" />
             <element signature="method#findPersonByCourse#0;class#Database#0" />
-            <element signature="method#sortCafedras#0;class#Database#0" />
-            <element signature="method#sortFaculty#0;class#Database#0" />
-            <element signature="method#sortPerson#0;class#Database#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DB/Connect.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="17" column="14" lean-forward="true" selection-start-line="17" selection-start-column="14" selection-end-line="17" selection-end-column="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Interface/PeopleTable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
