@@ -49,7 +49,7 @@ public class SortPeople {
             }
         });
 
-        JButton Button11 = new JButton("Sort by surname (A-Z)");
+        JButton Button11 = new JButton("...surname (A-Z)");
         Button11.setBounds(WIDTH/4-WIDTH/8, 10+60, WIDTH / 4, 40);
         frame.add(Button11);
 
@@ -59,7 +59,7 @@ public class SortPeople {
                 PeopleTable.create(WIDTH,HEIGHT,-1,-1,-1,-1,array,1,1);
             }
         });
-        JButton Button10 = new JButton("Sort by surname (Z-A)");
+        JButton Button10 = new JButton("...surname (Z-A)");
         Button10.setBounds(3*WIDTH/4-WIDTH/8, 10+60, WIDTH / 4, 40);
         frame.add(Button10);
 
@@ -70,7 +70,7 @@ public class SortPeople {
             }
         });
 
-        JButton Button21 = new JButton("Sort by fathername (A-Z)");
+        JButton Button21 = new JButton("...fathername (A-Z)");
         Button21.setBounds(WIDTH/4-WIDTH/8, 10+120, WIDTH / 4, 40);
         frame.add(Button21);
 
@@ -80,7 +80,7 @@ public class SortPeople {
                 PeopleTable.create(WIDTH,HEIGHT,-1,-1,-1,-1,array,2,1);
             }
         });
-        JButton Button20 = new JButton("Sort by fathername (Z-A)");
+        JButton Button20 = new JButton("...fathername (Z-A)");
         Button20.setBounds(3*WIDTH/4-WIDTH/8, 10+120, WIDTH / 4, 40);
         frame.add(Button20);
 
