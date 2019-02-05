@@ -184,7 +184,7 @@ public class Database {
      * @param course
      * @param group
      */
-    public void insertNewPerson(int idCafedra, String name, String surname, String father_name, int studentTeacher, int course, int group){
+    public void insertNewPerson(int idCafedra, String name, String surname, String father_name, String studentTeacher, String  course, String group){
         String query =  "INSERT INTO `People` (`id_cafedra`, `name`, `surname`, `father_name`, `student_teacher`, `course`, `s_group`) VALUES (\""+idCafedra+"\",\""+name+"\",\""+surname+"\",\""+father_name+"\",\""+studentTeacher+"\",\""+course+"\",\""+group+"\")";
         try {
             statement.execute(query);
@@ -204,7 +204,7 @@ public class Database {
         try {
             ResultSet rs = statement.executeQuery(query);
             while (rs.next()){
-                Person person = new Person(rs.getInt("id"),rs.getInt("id_cafedra"),rs.getString("name"),rs.getString("surname"),rs.getString("father_name"),rs.getInt("student_teacher"),rs.getInt("course"),rs.getInt("s_group"));
+                Person person = new Person(rs.getInt("id"),rs.getInt("id_cafedra"),rs.getString("name"),rs.getString("surname"),rs.getString("father_name"),rs.getString("student_teacher"),rs.getString("course"),rs.getString("s_group"));
                 people.add(person);
             }
         } catch (SQLException e) {
@@ -224,7 +224,7 @@ public class Database {
         try {
             ResultSet rs = statement.executeQuery(query);
             while (rs.next()){
-                Person person = new Person(rs.getInt("id"),rs.getInt("id_cafedra"),rs.getString("name"),rs.getString("surname"),rs.getString("father_name"),rs.getInt("student_teacher"),rs.getInt("course"),rs.getInt("s_group"));
+                Person person = new Person(rs.getInt("id"),rs.getInt("id_cafedra"),rs.getString("name"),rs.getString("surname"),rs.getString("father_name"),rs.getString("student_teacher"),rs.getString("course"),rs.getString("s_group"));
                 people.add(person);;
             }
         } catch (SQLException e) {
@@ -244,7 +244,7 @@ public class Database {
      * @param course
      * @param group
      */
-    public void updatePersonById(int id,int idCafedra, String name, String surname, String father_name, int studentTeacher, int course, int group){
+    public void updatePersonById(int id,int idCafedra, String name, String surname, String father_name, String studentTeacher, String course, String group){
         String query = "UPDATE People SET id_cafedra = '"+idCafedra+"', name = '"+name+"', surname = '"+surname+"', father_name = '"+father_name+"', student_teacher = '"+studentTeacher+"', course = '"+course+"', s_group = '"+group+"' WHERE People.id = "+id;
         try {
             statement.executeUpdate(query);
@@ -265,15 +265,15 @@ public class Database {
      * @param group
      * @return
      */
-    public ArrayList<Person> findPerson(int idCafedra, String name, String surname, String father_name, int studentTeacher, int course, int group){
+    public ArrayList<Person> findPerson(int idCafedra, String name, String surname, String father_name, String studentTeacher, String course, String group){
         ArrayList<Person> people= getPeople();
         if (idCafedra!=0) people=findPersonByIdCafedra(people, idCafedra);
         if (!name.equals("")) people=findPersonByName(people, name);
         if (!surname.equals("")) people=findPersonBySurname(people, surname);
         if (!father_name.equals("")) people=findPersonByFatherName(people, father_name);
-        if (studentTeacher!=0) people=findPersonByStudentTeacher(people, studentTeacher);
-        if (course!=0) people=findPersonByCourse(people, course);
-        if (group!=0) people=findPersonByGroup(people, group);
+        if (!studentTeacher.equals("")) people=findPersonByStudentTeacher(people, studentTeacher);
+        if (!course.equals("")) people=findPersonByCourse(people, course);
+        if (!group.equals("")) people=findPersonByGroup(people, group);
         return people;
     }
 
@@ -349,10 +349,10 @@ public class Database {
      * @param studentTeacher
      * @return
      */
-    private ArrayList<Person> findPersonByStudentTeacher(ArrayList<Person> people, int studentTeacher){
+    private ArrayList<Person> findPersonByStudentTeacher(ArrayList<Person> people, String studentTeacher){
         ArrayList<Person> personArrayList= new ArrayList<>();
         for (int i=0;i<people.size();i++){
-            if (people.get(i).isATeacher()==studentTeacher){
+            if (people.get(i).isATeacher().equals(studentTeacher)){
                 personArrayList.add(people.get(i));
             }
         }
@@ -365,10 +365,10 @@ public class Database {
      * @param group
      * @return
      */
-    private ArrayList<Person> findPersonByGroup(ArrayList<Person> people, int group){
+    private ArrayList<Person> findPersonByGroup(ArrayList<Person> people, String group){
         ArrayList<Person> personArrayList= new ArrayList<>();
         for (int i=0;i<people.size();i++){
-            if (people.get(i).getGroup()==group){
+            if (people.get(i).getGroup().equals(group)){
                 personArrayList.add(people.get(i));
             }
         }
@@ -381,16 +381,25 @@ public class Database {
      * @param course
      * @return
      */
-    private ArrayList<Person> findPersonByCourse(ArrayList<Person> people, int course){
+    private ArrayList<Person> findPersonByCourse(ArrayList<Person> people, String course){
         ArrayList<Person> personArrayList= new ArrayList<>();
         for (int i=0;i<people.size();i++){
-            if (people.get(i).getCafedraId()==course){
+            if (people.get(i).getCourse().equals(course)){
                 personArrayList.add(people.get(i));
             }
         }
         return personArrayList;
     }
 
+
+    private void sortPerson(ArrayList<Person> people){
+
+        ArrayList<String> stringArrayList= new ArrayList<String>();
+        for (int i = 0;i<people.size();i++){
+            stringArrayList.add(people.get(i).getName());
+        }
+
+    }
 
 
 }

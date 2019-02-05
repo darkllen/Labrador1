@@ -12,7 +12,7 @@ public class Person {
      * @param course
      * @param group
      */
-    public Person(int id, int cafedraId, String name, String surname, String fatherName, int isATeacher, int course, int group) {
+    public Person(int id, int cafedraId, String name, String surname, String fatherName, String isATeacher, String course, String group) {
         this.id = id;
         this.cafedraId = cafedraId;
         this.name = name;
@@ -28,9 +28,9 @@ public class Person {
     private String name;
     private String surname;
     private String fatherName;
-    private int isATeacher;
-    private int course;
-    private int group;
+    private String isATeacher;
+    private String course;
+    private String group;
 
     public int getId(){return id;}
 
@@ -66,27 +66,27 @@ public class Person {
         this.fatherName = fatherName;
     }
 
-    public int isATeacher() {
+    public String isATeacher() {
         return isATeacher;
     }
 
-    public void setATeacher(int ATeacher) {
+    public void setATeacher(String ATeacher) {
         isATeacher = ATeacher;
     }
 
-    public int getCourse() {
+    public String getCourse() {
         return course;
     }
 
-    public void setCourse(int course) {
+    public void setCourse(String course) {
         this.course = course;
     }
 
-    public int getGroup() {
+    public String  getGroup() {
         return group;
     }
 
-    public void setGroup(int group) {
+    public void setGroup(String group) {
         this.group = group;
     }
 }
