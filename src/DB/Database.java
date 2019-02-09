@@ -44,7 +44,6 @@ public class Database {
         statement.execute(query);
         query = "delete from `People` where id_cafedra="+id;
         statement.execute(query);
-
     }
     public void deletePeople(int id) throws SQLException {
         String  query = "delete from `People` where id="+id;
@@ -53,7 +52,7 @@ public class Database {
     }
 
     /**
-     * @param sortAD 1 for descending sort, 0 for ascending sort by name
+     * @param sortAD 0 for descending sort, 1 for ascending sort by name
      * @return arrayList of all faculties
      */
     public ArrayList<Faculty> getFaculties(int sortAD){
@@ -103,7 +102,7 @@ public class Database {
     /**
      *
      * @param facultyId
-     * @param sortAD 1 for descending sort, 0 for ascending sort by name
+     * @param sortAD 0 for descending sort, 1 for ascending sort by name
      * @return all cafedras with this id
      */
     public ArrayList<Cafedra> getCafedrasByFacultyId(int facultyId, int sortAD){
@@ -157,7 +156,7 @@ public class Database {
     }
 
     /**
-     * @param sortAD 1 for descending sort, 0 for ascending sort by name
+     * @param sortAD 0 for descending sort, 1 for ascending sort by name
      * @return all cafedras
      */
     public ArrayList<Cafedra> getCafedras(int sortAD){
@@ -214,7 +213,7 @@ public class Database {
 
     /**
      * @param sortColumn 0 for name, 1 for surname, 2 for father_name, 3 for studentTeacher, 4 for course, 5 for group
-     * @param sortAD 1 for descending sort, 0 for ascending sort
+     * @param sortAD 0 for descending sort, 1 for ascending sort
      * @return all people
      */
     public ArrayList<Person> getPeople(int sortColumn, int sortAD){
@@ -288,7 +287,7 @@ public class Database {
      * @param course
      * @param group
      * @param sortColumn 0 for name, 1 for surname, 2 for father_name, 3 for studentTeacher, 4 for course, 5 for group
-     * @param sortAD 1 for descending sort, 0 for ascending sort
+     * @param sortAD 0 for descending sort, 1 for ascending sort
      * @return
      */
     public ArrayList<Person> findPerson(int idCafedra, String name, String surname, String father_name, String studentTeacher, String course, String group, int sortColumn, int sortAD){
