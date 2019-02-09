@@ -84,8 +84,8 @@ public class Search {
                     ArrayList<Cafedra> arrayCaf;
                     int cafId=0;
                     arrayCaf = database.getCafedrasByName(text[6].getText());
-                    if (arrayCaf.size() != 0) {
-                        cafId=arrayCaf.get(0).getId();
+                    if ((arrayCaf.size() != 0)||(text[6].getText().equals(""))) {
+                        if(arrayCaf.size()!=0)cafId=arrayCaf.get(0).getId();
                     arrayP = database.findPerson(cafId, text[0].getText().toString(), text[1].getText().toString(), text[2].getText().toString(), text[3].getText(), text[4].getText(), text[5].getText(), sortColumn, sortAD);
 
                     PeopleTable.create(WIDTH,HEIGHT,-1,-1,-1,-1,arrayP,sortColumn,sortAD);}
