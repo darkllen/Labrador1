@@ -7,7 +7,7 @@ import java.sql.Statement;
 
 public class Connect {
 
-    private static final String url = "jdbc:mysql://db4free.net:3306/lendro";
+    private static final String url = "jdbc:mysql://db4free.net:3307/lendro";
     private static final String user = "darklen";
     private static final String password = "0987654321";
     public Connection connection;
