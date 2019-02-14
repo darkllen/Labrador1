@@ -36,28 +36,37 @@ public class Search {
 //            label1.setLocation(WIDTH/2-70-label1.getWidth(),30);
 //            frame.add(label1);
             JTextField[]text=new JTextField[7];
+            JComboBox comboBox = new JComboBox();
+            comboBox.addItem("Everyone");
+            comboBox.addItem("Student");
+            comboBox.addItem("Teacher");
+            comboBox.setLocation(WIDTH/2-50,20+45*3);
+            comboBox.setBounds(WIDTH/2-50, 20+45*3, 150, 25);
+            frame.add(comboBox);
 
-            JLabel s[] = new JLabel[7];
-            for(int i=0;i<7;i++){
-                s[i]=new JLabel();
-            }
+//            JLabel s[] = new JLabel[7];
+//            for(int i=0;i<7;i++){
+//                s[i]=new JLabel();
+//            }
 
-           // s[0].setText("Cafedra");
-            s[0].setText("Name");
-            s[1].setText("Surname");
-            s[2].setText("FatherName");
-            s[3].setText("Student or Teacher");
-            s[4].setText("Course");
-            s[5].setText("Group");
-            s[6].setText("Cafedra");
+
 
 
 
             for(int i=0;i<text.length;i++){
                 text[i]=new JTextField();
                 text[i].setBounds(WIDTH/2-50, 20+(45*i), 100, 25);
-                frame.add(text[i]);
+                if(i!=3)frame.add(text[i]);
             }
+
+            text[0].setText("Name");
+            text[1].setText("Surname");
+            text[2].setText("FatherName");
+            text[3].setText("Student or Teacher");
+            text[4].setText("Course");
+            text[5].setText("Group");
+            text[6].setText("Cafedra");
+
 
 
 //            for (int i = 0; i < text.length; i += 1) {
@@ -79,13 +88,27 @@ public class Search {
 
             searchButton.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
+
+                    text[3].setText(comboBox.getSelectedItem().toString());
+
+                    if(text[0].getText().equals("Name"))text[0].setText("");
+                    if(text[1].getText().equals("Surname"))text[1].setText("");
+                    if(text[2].getText().equals("FatherName"))text[2].setText("");
+                    if(text[4].getText().equals("Course"))text[4].setText("");
+                    if(text[5].getText().equals("Group"))text[5].setText("");
+                    if(text[6].getText().equals("Cafedra"))text[6].setText("");
+                    if(comboBox.getSelectedItem().equals("Everyone")) {System.out.println(text[3].getText().toString());text[3].setText("");}
+
                     frame.setVisible(false);
                     ArrayList<Person> arrayP;
                     ArrayList<Cafedra> arrayCaf;
-                    int cafId=0;
+                    int cafId=-1;
+                    if(text[6].getText().equals("")) {arrayCaf=database.getCafedras(0);cafId=0;}else
                     arrayCaf = database.getCafedrasByName(text[6].getText());
-                    if ((arrayCaf.size() != 0)||(text[6].getText().equals(""))) {
-                        if(arrayCaf.size()!=0)cafId=arrayCaf.get(0).getId();
+                    if ((arrayCaf.size() != 0)
+                          //  ||(text[6].getText().equals(""))
+                    ) {
+                        if((arrayCaf.size()!=0)&&(cafId!=0))cafId=arrayCaf.get(0).getId();
                     arrayP = database.findPerson(cafId, text[0].getText().toString(), text[1].getText().toString(), text[2].getText().toString(), text[3].getText(), text[4].getText(), text[5].getText(), sortColumn, sortAD);
 
                     PeopleTable.create(WIDTH,HEIGHT,-1,-1,-1,-1,arrayP,sortColumn,sortAD);}

@@ -4,7 +4,7 @@ import Interface.Menu;
 
 public class Main {
     public static void main(String[] args) {
-        Menu.create(600,400);
+        Menu.create(800,600);
         Connect connect = new Connect();
         System.out.println("s");
         Database database = new Database(connect.connectToDB());

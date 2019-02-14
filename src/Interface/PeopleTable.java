@@ -44,12 +44,11 @@ public class PeopleTable {
 
             @Override
             public boolean isCellEditable(int i, int i1) {
-                if(cId==-1)return false;
-                else return true;
+
+                return false;
             }
         };
-        final boolean[] newButtonPressed = {false};
-        final boolean[] delButtonPressed = {false};
+
 
         ArrayList<Person> array;
         if(myArray!=null){database.sortPerson(myArray,sortColumn,sortAD);array=myArray;}
@@ -94,7 +93,7 @@ public class PeopleTable {
         if(cId!=-1) {
 
             JButton backButton = new JButton("Back");
-            backButton.setBounds(10, HEIGHT - 120, WIDTH / 5, 50);
+            backButton.setBounds(10, HEIGHT - 120, WIDTH / 6, 50);
             peopleTable.add(backButton);
 
             backButton.addActionListener(new ActionListener() {
@@ -107,28 +106,43 @@ public class PeopleTable {
             });
 
             JButton newButton = new JButton("New Person");
-            newButton.setBounds(30 + WIDTH / 5, HEIGHT - 120, WIDTH / 5, 50);
+            newButton.setBounds(30 + WIDTH / 6, HEIGHT - 120, WIDTH / 6, 50);
             peopleTable.add(newButton);
 
 
             newButton.addActionListener(new ActionListener() {
 
                 public void actionPerformed(ActionEvent e) {
-                    newButtonPressed[0] = true;
-                    String textPerson="New Person!";
-                    row[0] = textPerson;
-                    row[1] = textPerson;
-                    row[2] = textPerson;
-                    row[3] = "Student";
-                    row[4] = 0;
-                    row[5] = 0;
-                    model.addRow(row);
-                    database.insertNewPerson(cId,textPerson,textPerson,textPerson,"Student","1","1");
+
+                    peopleTable.setVisible(false);
+                    NewOrEditWindow.createPer( WIDTH, HEIGHT,"new",cId,sortColumn, sortAD,-1,number,fId,fNumber,myArray);
+
+//
+                }
+            });
+
+            JButton editButton = new JButton("Edit person");
+            editButton.setBounds(50 + 2 * WIDTH / 6, HEIGHT - 120, WIDTH / 6, 50);
+            peopleTable.add(editButton);
+
+            editButton.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+
+                    int row = table.getSelectedRow();
+                    if (row >= 0) {
+
+                       peopleTable.setVisible(false);
+                        NewOrEditWindow.createPer( WIDTH, HEIGHT,"edit",cId,sortColumn, sortAD,row,number,fId,fNumber,myArray);
+
+
+                    } else {
+                        System.out.println("Edit Error");
+                    }
                 }
             });
 
             JButton delButton = new JButton("Delete person");
-            delButton.setBounds(50 + 2 * WIDTH / 5, HEIGHT - 120, WIDTH / 5, 50);
+            delButton.setBounds(70 + 3 * WIDTH / 6, HEIGHT - 120, WIDTH / 6, 50);
             peopleTable.add(delButton);
 
             delButton.addActionListener(new ActionListener() {
@@ -136,7 +150,7 @@ public class PeopleTable {
 
                     int i = table.getSelectedRow();
                     if (i >= 0) {
-                        delButtonPressed[0] = true;
+
                         model.removeRow(i);
                         int pId = database.getPeopleByCafedraId(cId,sortColumn,sortAD).get(i).getId();
                         try {
@@ -153,44 +167,10 @@ public class PeopleTable {
             });
 
 
-
-
             peopleTable.add(StartButton.createHideButton());
 
 
-            model.addTableModelListener(new TableModelListener() {
-
-                public void tableChanged(TableModelEvent e) {
-                    int row = e.getFirstRow();
-                    int column = e.getColumn();
-
-
-
-                    if (newButtonPressed[0] == true) {
-                        newButtonPressed[0] = false;
-                    } else if (delButtonPressed[0] == true) {
-                        delButtonPressed[0] = false;
-                    } else {
-                        Object[] data = new Object[6];
-
-                        data[0]=model.getValueAt(row,0);
-                        data[1]=model.getValueAt(row,1);
-                        data[2]=model.getValueAt(row,2);
-                        data[3]=model.getValueAt(row,3);
-                        data[4]=model.getValueAt(row,4);
-                        data[5]=model.getValueAt(row,5);
-                        database.updatePersonById(database.getPeopleByCafedraId(cId,sortColumn,sortAD).get(row).getId(),cId, data[0].toString(),data[1].toString(),data[2].toString(),data[3].toString(),data[4].toString(),data[5].toString());
-
-
-                    }
-
-                }
-
-            });
-
         }else{
-
-            //TableColumn myColumn=table.getColumnModel().getColumn(0);
 
 
             JButton backButton = new JButton("Back");

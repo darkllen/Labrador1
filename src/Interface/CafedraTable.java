@@ -3,11 +3,8 @@ package Interface;
 import DB.Connect;
 import DB.Database;
 import Model.Cafedra;
-import Model.Faculty;
 
 import javax.swing.*;
-import javax.swing.event.TableModelEvent;
-import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -37,9 +34,14 @@ public class CafedraTable {
 
 
         JTable table=new JTable();
-        DefaultTableModel model=new DefaultTableModel();
-        final boolean[] newButtonPressed = {false};
-        final boolean[] delButtonPressed = {false};
+        DefaultTableModel model=new DefaultTableModel() {
+
+            @Override
+            public boolean isCellEditable(int i, int i1) {
+                return false;
+            }
+        };
+
 
         ArrayList<Cafedra> array=database.getCafedrasByFacultyId(fId,cafedraSort);
 
@@ -62,7 +64,7 @@ public class CafedraTable {
 
         //buttons
         JButton backButton = new JButton("Back");
-        backButton.setBounds(10,HEIGHT-120,WIDTH/5,50);
+        backButton.setBounds(10,HEIGHT-120,WIDTH/6,50);
         cafedraTable.add(backButton);
 
         backButton.addActionListener(new ActionListener(){
@@ -73,26 +75,43 @@ public class CafedraTable {
         });
 
         JButton newButton = new JButton("New Cafedra");
-        newButton.setBounds(30+WIDTH/5,HEIGHT-120,WIDTH/5,50);
+        newButton.setBounds(30+WIDTH/6,HEIGHT-120,WIDTH/6,50);
         cafedraTable.add(newButton);
 
-
-        // JTextField textId = new JTextField();
-        ///textId.setBounds(20, 220, 100, 25);
-        //facultyTable.add(textId);
 
         newButton.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
-                database.insertNewCafedra(fId,"New Cafedra!");
-                newButtonPressed[0] =true;
-                row[0]="New Cafedra!";
-                model.addRow(row);
+
+                cafedraTable.setVisible(false);
+                NewOrEditWindow.createCaf(WIDTH,HEIGHT,"new",facultySort,0,cafedraSort,fId,number);
+
+            }
+        });
+
+        JButton editButton = new JButton("Edit cafedra");
+        editButton.setBounds(50+2*WIDTH/6,HEIGHT-120,WIDTH/6,50);
+        cafedraTable.add(editButton);
+
+        editButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+
+                int row = table.getSelectedRow();
+                if(row >= 0){
+                    cafedraTable.setVisible(false);
+
+                    NewOrEditWindow.createCaf(WIDTH,HEIGHT,"edit",facultySort,row,cafedraSort,fId,number);
+
+
+                }
+                else{
+                    System.out.println("Edit Error");
+                }
             }
         });
 
         JButton delButton = new JButton("Delete cafedra");
-        delButton.setBounds(50+2*WIDTH/5,HEIGHT-120,WIDTH/5,50);
+        delButton.setBounds(70+3*WIDTH/6,HEIGHT-120,WIDTH/6,50);
         cafedraTable.add(delButton);
 
         delButton.addActionListener(new ActionListener() {
@@ -100,7 +119,7 @@ public class CafedraTable {
 
                 int i = table.getSelectedRow();
                 if(i >= 0){
-                    delButtonPressed[0]=true;
+
                     model.removeRow(i);
                     int cId=database.getCafedrasByFacultyId(fId,cafedraSort).get(i).getFacultyId();
                     try {
@@ -119,7 +138,7 @@ public class CafedraTable {
 
 
         JButton openButton = new JButton("Open people");
-        openButton.setBounds(70+3*WIDTH/5,HEIGHT-120,WIDTH/5,50);
+        openButton.setBounds(90+4*WIDTH/6,HEIGHT-120,WIDTH/6,50);
         cafedraTable.add(openButton);
 
         openButton.addActionListener(new ActionListener() {
@@ -139,27 +158,6 @@ public class CafedraTable {
 
 
 
-        model.addTableModelListener(new TableModelListener() {
 
-            public void tableChanged(TableModelEvent e) {
-                int row = e.getFirstRow();
-                int column = e.getColumn();
-
-                Object data=new Object();
-                if(newButtonPressed[0]==true){
-                    newButtonPressed[0]=false;
-                }else
-                if(delButtonPressed[0]==true){
-                    delButtonPressed[0]=false;
-                }
-                else
-                {
-                    data = model.getValueAt(row, column);
-                    database.updateCafedra(database.getCafedrasByFacultyId(fId,cafedraSort).get(row).getId(),fId,data.toString());
-                }
-
-            }
-
-        });
     }
 }
