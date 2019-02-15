@@ -40,8 +40,8 @@ public class Search {
             comboBox.addItem("Everyone");
             comboBox.addItem("Student");
             comboBox.addItem("Teacher");
-            comboBox.setLocation(WIDTH/2-50,20+45*3);
-            comboBox.setBounds(WIDTH/2-50, 20+45*3, 150, 25);
+            comboBox.setLocation(WIDTH/2-75,20+45*3);
+            comboBox.setBounds(WIDTH/2-75, 20+45*3, 150, 25);
             frame.add(comboBox);
 
 //            JLabel s[] = new JLabel[7];
@@ -55,7 +55,7 @@ public class Search {
 
             for(int i=0;i<text.length;i++){
                 text[i]=new JTextField();
-                text[i].setBounds(WIDTH/2-50, 20+(45*i), 100, 25);
+                text[i].setBounds(WIDTH/2-75, 20+(45*i), 150, 25);
                 if(i!=3)frame.add(text[i]);
             }
 
@@ -83,7 +83,7 @@ public class Search {
             frame.add(StartButton.createHideButton());
 
             JButton searchButton = new JButton("Search");
-            searchButton.setBounds(3*WIDTH/4-WIDTH/10, HEIGHT-115, WIDTH / 5, 50);
+            searchButton.setBounds(3*WIDTH/4-WIDTH/8, HEIGHT-200, WIDTH / 4, 50);
             frame.add(searchButton);
 
             searchButton.addActionListener(new ActionListener() {
@@ -118,7 +118,7 @@ public class Search {
             });
 
             JButton backButton = new JButton("Back");
-            backButton.setBounds(10,HEIGHT-120,WIDTH/5,50);
+            backButton.setBounds(WIDTH/8,HEIGHT-200,WIDTH/4,50);
             frame.add(backButton);
 
             backButton.addActionListener(new ActionListener(){

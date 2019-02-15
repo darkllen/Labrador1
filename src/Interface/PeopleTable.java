@@ -68,7 +68,7 @@ public class PeopleTable {
         JScrollPane pane = new JScrollPane(table);
 
         peopleTable.setLayout(null);
-        pane.setBounds(0, 0, WIDTH-18, 3*HEIGHT/5);
+        pane.setBounds(0, 0, WIDTH-18, 2*HEIGHT/3); //////!!!!!!!!!!!!!!!!!!
         peopleTable.add(pane);
         Object[] row = new Object[6];
         Table.tableParameters(WIDTH,table,columns,model);
@@ -174,7 +174,7 @@ public class PeopleTable {
 
 
             JButton backButton = new JButton("Back");
-            backButton.setBounds(10, HEIGHT - 120, WIDTH / 5, 50);
+            backButton.setBounds(WIDTH/8,HEIGHT-120,WIDTH/4,50);
             peopleTable.add(backButton);
 
             backButton.addActionListener(new ActionListener() {
@@ -187,7 +187,7 @@ public class PeopleTable {
             });
 
             JButton sortButton = new JButton("SortPeople");
-            sortButton.setBounds(30+WIDTH/5, HEIGHT - 120, WIDTH / 5, 50);
+            sortButton.setBounds(3*WIDTH/4-WIDTH/8,HEIGHT-120,WIDTH/4,50);
             peopleTable.add(sortButton);
 
             sortButton.addActionListener(new ActionListener() {

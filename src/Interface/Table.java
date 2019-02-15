@@ -23,7 +23,7 @@ public class Table {
         table.setBackground(Color.LIGHT_GRAY);
         table.setSelectionForeground(Color.red);
         table.setSelectionBackground(Color.yellow);
-        table.setRowHeight(100);
+        table.setRowHeight(50);
 
 
     }

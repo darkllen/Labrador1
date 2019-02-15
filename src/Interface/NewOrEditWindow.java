@@ -34,12 +34,13 @@ public class NewOrEditWindow {
         Database database=new Database(connect.connectToDB());
 
         JFrame frame = new JFrame("NEW");
-        frame.setSize(WIDTH, HEIGHT);
+        frame.setSize(WIDTH, HEIGHT*3/4);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
         frame.setLayout(null);
 
         JTextField[] text=new JTextField[6];
+
 
         for(int i=0;i<6;i++)
             text[i]=new JTextField();
@@ -107,7 +108,7 @@ public class NewOrEditWindow {
 
 
         JButton backButton = new JButton("Back");
-        backButton.setBounds(10,HEIGHT-120,WIDTH/5,50);
+        backButton.setBounds(WIDTH/8,HEIGHT-270,WIDTH/4,50);
         frame.add(backButton);
 
 
@@ -124,7 +125,7 @@ public class NewOrEditWindow {
 
 
         JButton saveButton = new JButton("Save");
-        saveButton.setBounds(30+WIDTH/5,HEIGHT-120,WIDTH/5,50);
+        saveButton.setBounds(3*WIDTH/4-WIDTH/8,HEIGHT-270,WIDTH/4,50);
         frame.add(saveButton);
 
         saveButton.addActionListener(new ActionListener(){
@@ -158,7 +159,7 @@ public class NewOrEditWindow {
         Database database=new Database(connect.connectToDB());
 
         JFrame frame = new JFrame("NEW");
-        frame.setSize(WIDTH, HEIGHT);
+        frame.setSize(WIDTH/2, HEIGHT/2);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
         frame.setLayout(null);
@@ -166,7 +167,7 @@ public class NewOrEditWindow {
         JTextField text=new JTextField();
 
 
-        text.setBounds(WIDTH/2-50, 20, 150, 25);
+        text.setBounds(WIDTH/4-75, 60, 150, 25);
         if(newEdit.equals("new"))text.setText("Print UNIQUE name");
         else text.setText(database.getCafedrasByFacultyId(fId,0).get(row).getName());
 
@@ -178,7 +179,7 @@ public class NewOrEditWindow {
 
 
         JButton backButton = new JButton("Back");
-        backButton.setBounds(10,HEIGHT-120,WIDTH/5,50);
+        backButton.setBounds(WIDTH/16,HEIGHT-430,WIDTH/8,50);
         frame.add(backButton);
 
         backButton.addActionListener(new ActionListener(){
@@ -193,7 +194,7 @@ public class NewOrEditWindow {
 
 
         JButton saveButton = new JButton("Save");
-        saveButton.setBounds(30+WIDTH/5,HEIGHT-120,WIDTH/5,50);
+        saveButton.setBounds(3*WIDTH/8-WIDTH/16,HEIGHT-430,WIDTH/8,50);
         frame.add(saveButton);
 
         saveButton.addActionListener(new ActionListener(){
@@ -222,7 +223,7 @@ public class NewOrEditWindow {
         Database database=new Database(connect.connectToDB());
 
         JFrame frame = new JFrame("NEW");
-        frame.setSize(WIDTH, HEIGHT);
+        frame.setSize(WIDTH/2, HEIGHT/2);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
         frame.setLayout(null);
@@ -230,7 +231,7 @@ public class NewOrEditWindow {
         JTextField text=new JTextField();
 
 
-        text.setBounds(WIDTH/2-50, 20, 150, 25);
+        text.setBounds(WIDTH/4-75, 60, 150, 25);
         if(newEdit.equals("new"))text.setText("Print UNIQUE name");
         else text.setText(database.getFaculties(0).get(row).getName());
 
@@ -243,7 +244,7 @@ public class NewOrEditWindow {
 
 
         JButton backButton = new JButton("Back");
-        backButton.setBounds(10,HEIGHT-120,WIDTH/5,50);
+        backButton.setBounds(WIDTH/16,HEIGHT-430,WIDTH/8,50);
         frame.add(backButton);
 
         backButton.addActionListener(new ActionListener(){
@@ -259,7 +260,7 @@ public class NewOrEditWindow {
 
 
         JButton saveButton = new JButton("Save");
-        saveButton.setBounds(30+WIDTH/5,HEIGHT-120,WIDTH/5,50);
+        saveButton.setBounds(3*WIDTH/8-WIDTH/16,HEIGHT-430,WIDTH/8,50);
         frame.add(saveButton);
 
         saveButton.addActionListener(new ActionListener(){
@@ -306,6 +307,10 @@ else System.out.println("Please check your data");
         for(int i=0;i<fathername.length();i++)
             if( !Character.isLetter(fathername.charAt(i))) return false;
             if(studentOrTeacher.equals("Student")) {
+
+                if(course.equals("0"))return false;
+                if(group.equals("0"))return false;
+
                 for (int i = 0; i < course.length(); i++)
                     if (!Character.isDigit(course.charAt(i))) return false;
                 for (int i = 0; i < group.length(); i++)
