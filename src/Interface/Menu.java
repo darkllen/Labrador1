@@ -38,7 +38,6 @@ public class Menu extends JFrame{
 
        facultyButton.addActionListener(new ActionListener(){
            public void actionPerformed(ActionEvent e){
-               System.out.println("pressed Faculty");
                menu.setVisible(false);
                FacultyTable.create(WIDTH,HEIGHT);
            }
@@ -47,7 +46,6 @@ public class Menu extends JFrame{
        peopleButton.addActionListener(new ActionListener(){
            public void actionPerformed(ActionEvent e){
 
-               System.out.println("pressed People");
                menu.setVisible(false);
                PeopleTable.create(WIDTH,HEIGHT,-1,-1,-1,-1,null,0,0);
            }
@@ -56,7 +54,6 @@ public class Menu extends JFrame{
        searchButton.addActionListener(new ActionListener(){
            public void actionPerformed(ActionEvent e){
 
-               System.out.println("pressed Search");
                menu.setVisible(false);
                Search.create(WIDTH,HEIGHT);
            }

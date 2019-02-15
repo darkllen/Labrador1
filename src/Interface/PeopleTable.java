@@ -53,7 +53,7 @@ public class PeopleTable {
         ArrayList<Person> array;
         if(myArray!=null){database.sortPerson(myArray,sortColumn,sortAD);array=myArray;}
         else
-       if(cId==-1)
+       if(cId<=-1)
            array=database.getPeople(sortColumn,sortAD);
        else array=database.getPeopleByCafedraId(cId,cafedraSort,sortAD);
 
@@ -90,7 +90,7 @@ public class PeopleTable {
         comboBox.addItem("Teacher");
         professionColumn.setCellEditor(new DefaultCellEditor(comboBox));
 
-        if(cId!=-1) {
+        if(cId>0) {
 
             JButton backButton = new JButton("Back");
             backButton.setBounds(10, HEIGHT - 120, WIDTH / 6, 50);
@@ -181,7 +181,8 @@ public class PeopleTable {
                 public void actionPerformed(ActionEvent e) {
                     peopleTable.setVisible(false);
 
-                    Menu.create(WIDTH, HEIGHT);
+                    if(cId==-2)Search.create(WIDTH, HEIGHT);
+                    else Menu.create(WIDTH,HEIGHT);
 
                 }
             });

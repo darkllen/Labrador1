@@ -21,7 +21,7 @@ public class SortPeople {
         Database database=new Database(connect.connectToDB());
 
         JFrame frame = new JFrame("LAB 1: SORT MENU");
-        frame.setSize(WIDTH, HEIGHT);
+        frame.setSize(WIDTH, HEIGHT*2/3);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
         frame.setLayout(null);

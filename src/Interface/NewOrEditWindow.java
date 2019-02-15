@@ -6,6 +6,7 @@ import Model.Faculty;
 import Model.Person;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -32,9 +33,10 @@ public class NewOrEditWindow {
 
         Connect connect= new Connect();
         Database database=new Database(connect.connectToDB());
-
-        JFrame frame = new JFrame("NEW");
-        frame.setSize(WIDTH, HEIGHT*3/4);
+JFrame frame;
+       if(newEdit.equals("new")) frame = new JFrame("NEW");
+       else frame = new JFrame("EDIT");
+        frame.setSize(WIDTH, HEIGHT);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
         frame.setLayout(null);
@@ -46,21 +48,16 @@ public class NewOrEditWindow {
             text[i]=new JTextField();
 
         for(int i=0;i<6;i++)
-        text[i].setBounds(WIDTH/2-50, 20+45*i, 150, 25);
+        text[i].setBounds(WIDTH/2-75, 20+45*i+50, 150, 25);
 
         JComboBox comboBox = new JComboBox();
         comboBox.addItem("Student");
         comboBox.addItem("Teacher");
-        comboBox.setLocation(WIDTH/2-50,20+45*3);
-        comboBox.setBounds(WIDTH/2-50, 20+45*3, 150, 25);
+        //comboBox.setLocation(WIDTH/2-75,20+45*3);
+        comboBox.setBounds(WIDTH/2-75, 20+45*3+50, 150, 25);
         frame.add(comboBox);
-        if(newEdit.equals("new")){
-        text[0].setText("Name");
-        text[1].setText("Surname");
-        text[2].setText("Fathername");
-        text[4].setText("Course");
-        text[5].setText("Group");}
-        else{
+
+        if(newEdit.equals("edit")){
             text[0].setText(database.getPeopleByCafedraId(cId,sortColumn,sortAD).get(row).getName());
             text[1].setText(database.getPeopleByCafedraId(cId,sortColumn,sortAD).get(row).getSurname());
             text[2].setText(database.getPeopleByCafedraId(cId,sortColumn,sortAD).get(row).getFatherName());
@@ -70,6 +67,17 @@ public class NewOrEditWindow {
 
         }
 
+        Label[] labels=new Label[6];
+        labels[0]=new Label("Name:");
+        labels[1]=new Label("Surname:");
+        labels[2]=new Label("FatherName:");
+        labels[3]=new Label("ST/TEACH:");
+        labels[4]=new Label("Course:");
+        labels[5]=new Label("Group:");
+
+        for(int i=0;i<6;i++){labels[i].setBounds(WIDTH/2-75-75,20+45*i+50,75,25);
+        frame.add(labels[i]);}
+
         for(int i=0;i<6;i++)
             if(i!=3)
         frame.add(text[i]);
@@ -77,9 +85,13 @@ public class NewOrEditWindow {
         if(comboBox.getSelectedItem().equals("Teacher")){
             text[4].setVisible(false);
             text[5].setVisible(false);
+            labels[4].setVisible(false);
+            labels[5].setVisible(false);
         }else{
             text[4].setVisible(true);
             text[5].setVisible(true);
+            labels[4].setVisible(true);
+            labels[5].setVisible(true);
         }
 
 //        text[2].addActionListener(new ActionListener() {
@@ -97,9 +109,13 @@ public class NewOrEditWindow {
                 if(comboBox.getSelectedItem().equals("Teacher")){
                     text[4].setVisible(false);
                     text[5].setVisible(false);
+                    labels[4].setVisible(false);
+                    labels[5].setVisible(false);
                 }else{
                     text[4].setVisible(true);
                     text[5].setVisible(true);
+                    labels[4].setVisible(true);
+                    labels[5].setVisible(true);
                 }
             }
         });
@@ -108,7 +124,7 @@ public class NewOrEditWindow {
 
 
         JButton backButton = new JButton("Back");
-        backButton.setBounds(WIDTH/8,HEIGHT-270,WIDTH/4,50);
+        backButton.setBounds(WIDTH/8,HEIGHT-150,WIDTH/4,50);
         frame.add(backButton);
 
 
@@ -125,7 +141,7 @@ public class NewOrEditWindow {
 
 
         JButton saveButton = new JButton("Save");
-        saveButton.setBounds(3*WIDTH/4-WIDTH/8,HEIGHT-270,WIDTH/4,50);
+        saveButton.setBounds(3*WIDTH/4-WIDTH/8,HEIGHT-150,WIDTH/4,50);
         frame.add(saveButton);
 
         saveButton.addActionListener(new ActionListener(){
@@ -158,7 +174,9 @@ public class NewOrEditWindow {
         Connect connect= new Connect();
         Database database=new Database(connect.connectToDB());
 
-        JFrame frame = new JFrame("NEW");
+        JFrame frame;
+        if(newEdit.equals("new")) frame = new JFrame("NEW");
+        else frame = new JFrame("EDIT");
         frame.setSize(WIDTH/2, HEIGHT/2);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
@@ -166,9 +184,12 @@ public class NewOrEditWindow {
 
         JTextField text=new JTextField();
 
+        Label label=new Label("Print UNIQUE name");
+        label.setBounds(WIDTH/4-55,30,150,25);
+        frame.add(label);
 
         text.setBounds(WIDTH/4-75, 60, 150, 25);
-        if(newEdit.equals("new"))text.setText("Print UNIQUE name");
+        if(newEdit.equals("new"))text.setText("");
         else text.setText(database.getCafedrasByFacultyId(fId,0).get(row).getName());
 
         frame.add(text);
@@ -222,7 +243,9 @@ public class NewOrEditWindow {
         Connect connect= new Connect();
         Database database=new Database(connect.connectToDB());
 
-        JFrame frame = new JFrame("NEW");
+        JFrame frame;
+        if(newEdit.equals("new")) frame = new JFrame("NEW");
+        else frame = new JFrame("EDIT");
         frame.setSize(WIDTH/2, HEIGHT/2);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
@@ -231,8 +254,11 @@ public class NewOrEditWindow {
         JTextField text=new JTextField();
 
 
+        Label label=new Label("Print UNIQUE name");
+        label.setBounds(WIDTH/4-55,30,150,25);
+        frame.add(label);
         text.setBounds(WIDTH/4-75, 60, 150, 25);
-        if(newEdit.equals("new"))text.setText("Print UNIQUE name");
+        if(newEdit.equals("new"))text.setText("");
         else text.setText(database.getFaculties(0).get(row).getName());
 
         frame.add(text);
@@ -292,7 +318,7 @@ else System.out.println("Please check your data");
         Database database=new Database(connect.connectToDB());
         ArrayList<Faculty> array = database.getFacultiesByName(name);
         if(array.size()>0)return false;
-        if(name.equals("Print UNIQUE name"))return false;
+        //if(name.equals("Print UNIQUE name"))return false;
         if(name.equals(""))return false;
         for(int i=0;i<name.length();i++)
             if( !Character.isLetter(name.charAt(i))) return false;
@@ -332,9 +358,9 @@ else System.out.println("Please check your data");
                 }
 
             }
-        if(name.equals("Name"))return false;
-        if(surname.equals("Surname"))return false;
-        if(fathername.equals("FatherName"))return false;
+//        if(name.equals("Name"))return false;
+//        if(surname.equals("Surname"))return false;
+//        if(fathername.equals("FatherName"))return false;
 
             return true;
     }
